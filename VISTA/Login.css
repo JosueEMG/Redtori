@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+/* 
+    Created on : 17/11/2020, 12:47:51 AM
+    Author     : Eduardo Peña
+*/
+
+html{
+    
+    background-color: aliceblue;
+    color:black;
+    font: bold 90% cursive;
+    
+    /*font-size: 13px;*/
+
+}
+#rem_user{
+    position: absolute;
+    margin-left: -85px;
+}
+.div{
+    position: absolute;
+    
+    
+}
+input{
+    width: 200px;
+    color: black;
+    background-color: aliceblue;
+    font: bold 90% monospace;
+    font-size: 15px;
+    /*border: 3px solid #ffffff;*/
+}
+#register{
+    padding: 3px 10px;
+    border: black 2px dashed;
+    border-radius: 20px;
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 550px;
+    
+}
+.nav{
+      font-family: cursive;
+    font-size: 16px;
+}
+#center{
+    padding: 3px 10px;
+    border: black 2px dashed;
+    border-radius: 20px;
+    position: absolute;
+}
+.pie{
+    color:#330099;
+    font-size: 13px;
+    position: absolute;
+    margin-top: 550px;
+}
+#M{
+    position: absolute;
+    margin-top: 350px;
+}
+#planilla{
+    margin-top: 500px;
+    margin-left: 620px;
+    /*padding: 3px 10px;
+    border: black 2px dashed;
+    border-radius: 20px;*/
+    position: absolute;
+}
