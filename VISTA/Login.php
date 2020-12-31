@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION["usuario"])){
+if (isset($_SESSION["usuario"])) {
     header("location: ChatMundo.php");
 }
 ?>
@@ -8,7 +8,7 @@ if(isset($_SESSION["usuario"])){
     <head>
         <meta charset="UTF-8">
         <title>Login or Register</title>
-        <link href="Login.css" rel="stylesheet" type="text/css"/>
+        <link href="../Css/Login.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
@@ -16,7 +16,7 @@ if(isset($_SESSION["usuario"])){
             <nav class="nav">
                 Bienvenido a RedTori
             </nav>
-            <form action="" method="post" id="login">
+            <form method="post" id="login">
                 <p>Ingresar</p>
                 <label>Ingresa tu Nick o ID:</label>
                 <input type="text" placeholder="Ingresa tu nick o ID" id="Nick" name="nick"> 
@@ -31,21 +31,34 @@ if(isset($_SESSION["usuario"])){
         </div>
         <div id="register">
             <label>Eres nuevo? Registrate:</label>
-            <form method="post" name="register">
+            <form name="register" id="register1">
                 <label>Ingresa tu Nombre(s):</label>
-                <input type="text" placeholder="Ingresa tu nombre" id="Name_user" name="name_register" class="txt_regist">
+                <input type="text" placeholder="Ingresa tu nombre" id="nombre" name="name_register" class="txt_regist">
                 <label>Ingresa tus Apellidos: </label>
-                <input type="text" placeholder="Ingresa tus apellidos" id="Ape_user" name="ape_register" class="txt_regist">
+                <input type="text" placeholder="Ingresa tus apellidos" id="apellido" name="ape_register" class="txt_regist">
                 <br><br>
                 <label>Ingresa la fecha de nacimiento:</label>
-                <input type="date" name='date_nac' id='date_nac' class="txt_regist">
+                <input type="date" name='date_nac' id="fecha" class="txt_regist">
+                <br><br>
+                <label>Ingresa tu Sexo:</label>
+                <select id="sexo">
+                    <option value="M" selected>M</option>
+                    <option value="F">F</option>
+                </select>
+                <br><br>
                 <label>Ingresa tu usuario:</label>
-                <input type="text" placeholder="Ingresa un nick o un ID" id="Nick_register" name="user_register" class="txt_regist">
+                <input type="text" placeholder="Ingresa un nick o un ID" id="nick" name="user_register" class="txt_regist">
                 <br><br>
                 <label>Ingresa tu password:</label>
-                <input type="password" placeholder="Ingresa un password" id="Pass_register" name="pass_register" class="txt_regist">
-                <br><br><br><br>
-                &nbsp;<input type="submit" value="Registrarse" width="10px" id="listo_register" name="btn_register">
+                <input type="password" placeholder="Ingresa un password" id="contrasena" name="pass_register" class="txt_regist">
+                <br>
+                <br>
+                <label id="mensaje" hidden style="color: red">Ingrese datos a todos los campos</label>
+                <label id="mensaje1" hidden style="color: greenyellow">Usuario registrado con exito</label>
+                <div id="br" hidden>
+                    <br>
+                </div>
+                <input type="submit" value="Registrarse" width="10px" id="btn-register" name="btn_register">
 
             </form>
             <label id="error"></label>
@@ -58,6 +71,6 @@ if(isset($_SESSION["usuario"])){
 
         <small class="pie">Created by:Eduardo Peña</small>
     </body>
-    <script src="Index.js" type="text/javascript"></script>
+    <script src="../Js/Index.js" type="text/javascript"></script>
 </html>
 

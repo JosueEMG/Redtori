@@ -4,8 +4,6 @@ include_once '../modelo/Usuario.php';
 
 $usuario = new Usuario();
 session_start();
-$user = $_POST["user"];
-$pass = $_POST["pass"];
 
 if ($_POST['funcion'] == 'buscar_usuario') {
     $json = array();
@@ -16,8 +14,10 @@ if ($_POST['funcion'] == 'buscar_usuario') {
         $edad = $nacimiento->diff($fecha_actual);
         $edad_years = $edad->y;
         $json[] = array(
+            "nombre" => $objeto->nombre,
+            "apellido" => $objeto->apellido,
             'usuario' => $objeto->usuario,
-            'constrasena' => $objeto->apellidos_us,
+            'constrasena' => $objeto->contrasena,
             'edad' => $edad_years,
             'sexo' => $objeto->sexo,
             'foto' => '../img/' . $objeto->foto
@@ -28,9 +28,9 @@ if ($_POST['funcion'] == 'buscar_usuario') {
 }
 
 if ($_POST['funcion'] == "logueo") {
-    $estado = $usuario->loguearse($user, $pass);
+    $estado = $usuario->loguearse($_POST["user"], $_POST["pass"]);
     if (!empty($estado == "logueado")) {
-        $usuario->obtener_datos_logueo($user);
+        $usuario->obtener_datos_logueo($_POST["user"]);
         foreach ($usuario->objetos as $objeto) {
             $_SESSION['id_usuario'] = $objeto->id_usuario;
             $_SESSION['usuario'] = $objeto->usuario;
@@ -39,6 +39,20 @@ if ($_POST['funcion'] == "logueo") {
     } else {
         echo $estado;
     }
+}
+
+if ($_POST['funcion'] == "registrar") {
+    $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
+    $fecha = $_POST["fecha"];
+    $nick = $_POST["nick"];
+    $contrasena = $_POST["contrasena"];
+    $sexo = $_POST["sexo"];
+    $usuario->registrar($nombre, $apellido, $fecha, $nick, $contrasena, $sexo);
+}
+
+if ($_POST['funcion'] == "logout") {
+    session_destroy();
 }
 
 

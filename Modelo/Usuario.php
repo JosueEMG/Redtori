@@ -41,4 +41,21 @@ class Usuario {
         $this->objetos = $query->fetchall();
         return $this->objetos;       
     }
+    
+    function registrar($nombre,$apellido,$fecha,$nick,$pass, $sexo){
+        $sql="SELECT id_usuario FROM usuario where usuario=:usuario";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':usuario'=>$nick));
+        $this->objetos=$query->fetchall();
+        if(!empty($this->objetos)){
+            echo 'noanadido';
+        }
+        else{
+            $sql="INSERT INTO usuario(nombre, apellido, usuario, contrasena, fecha_nacimiento, sexo) values (:nombre, :apellido, :usuario, :contrasena, :fecha_nacimiento, :sexo)";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':nombre'=>$nombre,':apellido'=>$apellido,':usuario'=>$nick,':contrasena'=>$pass,':fecha_nacimiento'=>$fecha, ':sexo'=>$sexo));
+            echo 'anadido';
+        }
+        
+    }
 } 
